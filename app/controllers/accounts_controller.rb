@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @transactions = Transaction.where(account: params[:id])
+    @transactions = Transaction.where(to_account: params[:id]).or(Transaction.where(from_account: params[:id]))
   end
 
   # GET /accounts/new

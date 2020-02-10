@@ -21,8 +21,13 @@
 </p>
 
 <p>
-  <strong>Account:</strong>
-  <%= @transaction.account.name %>
+  <strong>From Account:</strong>
+  <%= @transaction.from_account.name if @transaction.from_account %>
+</p>
+
+<p>
+  <strong>To Account:</strong>
+  <%= @transaction.to_account.name if @transaction.to_account %>
 </p>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |

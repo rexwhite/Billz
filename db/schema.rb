@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 2019_08_17_171616) do
     t.string "payee"
     t.string "note"
     t.decimal "amount"
-    t.integer "account_id"
+    t.integer "to_account_id"
+    t.integer "from_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["from_account_id"], name: "index_transactions_on_from_account_id"
+    t.index ["to_account_id"], name: "index_transactions_on_to_account_id"
   end
 
 end
