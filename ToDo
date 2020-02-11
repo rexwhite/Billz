@@ -1,0 +1,7 @@
+todo: add support for categories
+todo: add statements
+todo: reconcile transactions
+todo: add transaction order field
+todo: factor out payee
+todo: payee list by popularity
+todo: memorized transaction

@@ -1,0 +1,50 @@
+p#notice = notice
+
+p
+  strong Name: 
+  = @account.name  
+
+
+p
+  strong Description: 
+  = @account.description  
+
+
+= (link_to 'Edit', edit_account_path(@account))
+|  |
+= (link_to 'Back', accounts_path)
+
+br
+
+h1 Transactions
+
+table.table.table-hover
+  thead
+    tr
+      th: span.glyphicon.glyphicon-remove-sign.remove-button-column
+      th Date
+      th Payee
+      th Note
+      th Amount
+      th From Account
+      th To Account
+      th Balance
+
+  tbody
+    - balance = 0
+    - @transactions.each do |transaction|
+      - amount = transaction.from_account_id == @account.id ? -transaction.amount : transaction.amount
+      / - amount = -amount if transaction.from_account_id == @account.id
+      - balance += amount
+      tr
+        td = link_to transaction, class: "remove-button", method: :delete, data: {confirm: 'Are you sure?'}
+          span.glyphicon.glyphicon-remove-sign
+        td = transaction.date
+        td = transaction.payee
+        td = transaction.note
+        td = number_to_currency(amount)
+        td = transaction.from_account_id
+        td = transaction.to_account_id
+        td = number_to_currency(balance)
+
+= link_to 'Add Transaction', new_transaction_path

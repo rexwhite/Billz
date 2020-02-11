@@ -1,0 +1,29 @@
+p#notice = notice
+
+p
+  strong Date:
+  = @transaction.date 
+
+p
+  strong Payee:
+  = @transaction.payee 
+
+p
+  strong Note:
+  = @transaction.note 
+
+p
+  strong Amount:
+  = @transaction.amount 
+
+p
+  strong From Account:
+  = @transaction.from_account.name if @transaction.from_account 
+
+p
+  strong To Account:
+  = @transaction.to_account.name if @transaction.to_account 
+
+= link_to 'Edit', edit_transaction_path(@transaction)
+|  |
+= link_to 'Back', transactions_path 
