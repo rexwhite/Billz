@@ -7,29 +7,42 @@
       - transaction.errors.full_messages.each do |message| 
         li = message
 
-  .field
-    = form.label :date 
-    = form.date_select :date 
+  = hidden_field_tag 'account_id', params[:account_id]
 
-  .field
-    = form.label :payee 
-    = form.text_field :payee 
+  .form-group
+    = form.label :date
+    = form.date_select :date
 
-  .field
-    = form.label :note 
-    = form.text_field :note 
+  .form-group
+    = form.label :payee
+    = form.text_field :payee
 
-  .field
-    = form.label :amount 
-    = form.text_field :amount 
+  .form-group
+    = form.label :note
+    = form.text_field :note
 
-  .field
-    = form.label :to_account_id 
-    = form.text_field :to_account_id 
+  .form-group
+    = form.label :type_withdrawal, class: "radio" do
+      = form.radio_button :type, 'payment', checked: true
+      | Payment
 
-  .field
-    = form.label :from_account_id 
-    = form.text_field :from_account_id 
+    = form.label :type_deposit, class: "radio" do
+      = form.radio_button :type, 'deposit'
+      | Deposit
+
+  .form-group
+    = form.label :amount
+    = form.text_field :amount
+
+  .form-group
+    = form.label :transfer
+      = form.check_box(:transfer)
+      |  Transfer
+
+  .form-group
+    = form.label :transfer_account_id
+    = form.text_field :transfer_account_id
 
   .actions
-    = form.submit 
+    = form.submit
+

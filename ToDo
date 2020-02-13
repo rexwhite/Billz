@@ -5,3 +5,6 @@ todo: add transaction order field
 todo: factor out payee
 todo: payee list by popularity
 todo: memorized transaction
+todo: users and login - multi-tenant?
+todo: scheduled transactions
+todo: loans

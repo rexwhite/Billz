@@ -24,11 +24,25 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
+    transaction = params[:transaction]
+
+    # set to_/from_account for payment / deposit / transfer
+    if transaction[:type] == "deposit"
+      # deposit are *to* current account
+      transaction[:to_account_id] = params[:account_id]
+    else
+      # payments and transfers are *from* current account
+      transaction[:from_account_id] = params[:account_id]
+      if transaction[:transfer]
+        transaction[:to_account_id] = transaction[:transfer_account_id]
+      end
+    end
+
     @transaction = Transaction.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to :controller => 'accounts', :action => 'show', :id => params[:account_id], notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new }
