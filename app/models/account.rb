@@ -2,6 +2,7 @@ class Account < ApplicationRecord
   has_many :deposits, class_name: "Transaction", foreign_key: "to_account_id"
   has_many :withdrawals, class_name: "Transaction", foreign_key: "from_account_id"
 
+  validates :name, presence: true
   def balance
     # deposits
     deposits = self.deposits.sum("amount")

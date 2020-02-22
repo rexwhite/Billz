@@ -1,10 +1,11 @@
-todo: add support for categories
+todo: add support for categories (as labels)
 todo: add statements
 todo: reconcile transactions
-todo: add transaction order field
+todo: add transaction order field (but what about transfers - two order fields?)
 todo: factor out payee
 todo: payee list by popularity
 todo: memorized transaction
-todo: users and login - multi-tenant?
 todo: scheduled transactions
+todo: balance forecast
+todo: users and login - multi-tenant?
 todo: loans

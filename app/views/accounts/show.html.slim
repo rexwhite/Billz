@@ -31,7 +31,7 @@ table.table.table-hover
 
   tbody
     - balance = 0
-    - @transactions.each do |transaction|
+    - @transactions.order(:created_at).each do |transaction|
       - is_deposit = transaction.to_account_id == @account.id
       - is_payment = transaction.from_account_id == @account.id
       - is_transfer = transaction.to_account_id && transaction.from_account_id
